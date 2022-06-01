@@ -54,7 +54,8 @@ String Product;
                      .with()
                      .mailLogin((this.User))
                      .passLogin(this.pass)
-                     .sendData(false)
+                     .sendData(false),
+                WaitUntil.the ( saucedemo_login.Span_products, isVisible ()).forNoMoreThan (20).seconds ()
         );
 
 
@@ -73,7 +74,7 @@ String Product;
    }
 
     @When("Fill from with FirstName {string}, LastName {string} and region code {string}")
-    public void fill_from_and_checkout(String Product, String FirstName, String LastName, String code) {
+    public void fill_from_and_checkout( String FirstName, String LastName, String code) {
     this.Product =Product;
         this.FirstName =FirstName;
         this.LastName =LastName;
