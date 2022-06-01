@@ -18,6 +18,7 @@ import starter.model.pageObjects.saucedemo_page.saucedemo_login;
 import starter.model.pageObjects.saucedemo_page.saucedemo_products;
 import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.Login;
+import starter.task.saucedemo.FillFomAndCheout;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -31,7 +32,7 @@ String FirstName;
 String LastName;
 String code;
 String Product;
-Actor actor;
+
 
     @Before
     public void setTheStage() {
@@ -46,27 +47,41 @@ Actor actor;
         //this.actor = user;
         setTheStage();
         getDriver();
-      theActorCalled(this.User).attemptsTo(
+        Actor actor = theActorCalled("Casual user");
+        actor.attemptsTo(
                 Navigate.saucedemo (),
-              WaitUntil.the (saucedemo_login.txt_user_login, isVisible ()).forNoMoreThan (10).seconds (),
-              Enter.keyValues (User).into (saucedemo_login.txt_user_login),
-              WaitUntil.the (saucedemo_login.txt_user_pass, isVisible ()).forNoMoreThan (10).seconds (),
-              Enter.keyValues (pass).into (saucedemo_login.txt_user_pass),
-              Click.on (saucedemo_login.btn_login)
-          //    ,WaitUntil.the ( saucedemo_login.Span_products, isVisible ()).forNoMoreThan (20).seconds ()
+             Login
+                     .with()
+                     .mailLogin((this.User))
+                     .passLogin(this.pass)
+                     .sendData(false)
         );
 
 
     }
 
-    @When("{string} select product, user {string} {string} region code {string}")
-    public void Select_product(String Product, String FirstName, String LastName, String code) {
+   @And("Add Product to shopin car")
+   public void Select_product(){
+       Actor actor = theActorCalled("Casual user");
+       actor.attemptsTo(
+               Navigate.toTheShoppingCart (),
+               AddProducts
+                       .with()
+                       .sendData(true)
+
+       );
+   }
+
+    @When("Fill from with FirstName {string}, LastName {string} and region code {string}")
+    public void fill_from_and_checkout(String Product, String FirstName, String LastName, String code) {
     this.Product =Product;
         this.FirstName =FirstName;
         this.LastName =LastName;
         this.code =code;
-        theActorCalled(this.Product).attemptsTo(
-                AddProducts
+        Actor actor = theActorCalled("Casual user");
+        actor.attemptsTo(
+                Navigate.toFrom (),
+                FillFomAndCheout
                         .with()
                         .FirstName(this.FirstName)
                         .LastName(this.LastName)

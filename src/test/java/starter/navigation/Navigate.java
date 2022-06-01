@@ -5,6 +5,11 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.ui.PageElement;
+import net.serenitybdd.screenplay.waits.WaitUntil;
+import starter.model.pageObjects.saucedemo_page.saucedemo_login;
+import starter.model.pageObjects.saucedemo_page.saucedemo_form;
+
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class Navigate {
     public static Performable toTheCatalogPage() {
@@ -19,7 +24,15 @@ public class Navigate {
 
     public static Performable toTheShoppingCart() {
         return Task.where("{0} opens the shopping cart",
-                Click.on(PageElement.called("shopping_cart_badge"))
+                WaitUntil.the ( saucedemo_login.Span_products, isVisible ()).forNoMoreThan (20).seconds ()
         );
     }
+
+    public static Performable toFrom() {
+        return Task.where("{0} opens the shopping cart",
+                WaitUntil.the ( saucedemo_form.Txt_firstName, isVisible ()).forNoMoreThan (20).seconds ()
+        );
+    }
+
+
 }

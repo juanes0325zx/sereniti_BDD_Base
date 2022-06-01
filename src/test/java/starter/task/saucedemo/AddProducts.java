@@ -13,17 +13,15 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 
 public class AddProducts implements Task {
 
-    private  String Product;
-    private  String FirstName;
-    private  String LastName;
-    private  String code;
 
-    private int num;
 
-    public AddProducts(String Product){
-        this.Product =Product;
+    private boolean value;
 
+    public AddProducts(boolean value){
+
+        this.value=value;
     }
+
 
     public static AddProductToShopingCar with(){
      return new AddProductToShopingCar();
@@ -31,22 +29,14 @@ public class AddProducts implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-
         actor.attemptsTo (
-                WaitUntil.the ( saucedemo_login.Span_products, isVisible ()).forNoMoreThan (20).seconds (),
                 Click.on (saucedemo_products.Producto_1),
                 Click.on (saucedemo_products.Producto_2),
                 WaitUntil.the ( saucedemo_products.BTN_buy_card, isVisible ()).forNoMoreThan (20).seconds (),
                 Click.on (saucedemo_products.BTN_buy_card),
                 WaitUntil.the ( saucedemo_products.Span_products, isVisible ()).forNoMoreThan (20).seconds (),
-                WaitUntil.the (saucedemo_products.Txt_firstName, isVisible ()).forNoMoreThan (10).seconds (),
-                Enter.keyValues (FirstName).into (saucedemo_products.Txt_firstName),
-                WaitUntil.the (saucedemo_products.Txt_firstName, isVisible ()).forNoMoreThan (10).seconds (),
-                Enter.keyValues (LastName).into (saucedemo_products.Txt_firstName),
-                WaitUntil.the (saucedemo_products.Txt_firstName, isVisible ()).forNoMoreThan (10).seconds (),
-                Enter.keyValues (code).into (saucedemo_products.Txt_firstName),
-                Click.on (saucedemo_products.Btn_Continue),
-                WaitUntil.the ( saucedemo_products.Span_products, isVisible ()).forNoMoreThan (20).seconds ()
+                Click.on (saucedemo_products.Btn_checkout)
+
         );
 
     }
@@ -55,35 +45,9 @@ public class AddProducts implements Task {
 
 
 
+
 public static class AddProductToShopingCar{
-    private  String Product;
-    private  String FirstName;
-    private  String LastName;
-    private  String code;
 
-
-
-
-    public AddProductToShopingCar productToAdd(String Product){
-        this.Product=Product;
-        return this;
-    }
-
-    public AddProductToShopingCar LastName(String LastName){
-        this.LastName=LastName;
-        return this;
-    }
-    public AddProductToShopingCar code(String code){
-        this.code=code;
-        return this;
-    }
-    public AddProductToShopingCar FirstName(String FirstName){
-        this.FirstName=FirstName;
-        return this;
-    }
-
-public Performable sendData(boolean value){
-        return new AddProducts(Product);
-}
+public Performable sendData(boolean value){return new AddProducts(value);}
 }
 }

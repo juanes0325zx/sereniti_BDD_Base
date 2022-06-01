@@ -10,13 +10,8 @@ public class saucedemo_products {
 
     public static By BTN_buy_card = By.xpath("//*[ @class='shopping_cart_link']");
 
-    public static By Span_products = By.xpath(Xpath_element.getByTextSpan("QTY DESCRIPTION"));
+    public static By Span_products = By.xpath(Xpath_element.getByText("DESCRIPTION"));
 
-    public static By Btn_Checkout = By.xpath("//*[ @id='checkout']");
-    public static By Txt_firstName = By.xpath("//*[ @id='first-name']");
-    public static By Txt_LastName = By.xpath("//*[ @id='last-name']");
-    public static By Txt_ZipCode = By.xpath("//*[ @id='postal-code']");
-    public static By Btn_Continue = By.xpath("//*[ @id='continue']");
-
+    public static By Btn_checkout = By.xpath("//*[ @id='checkout']");
 
 }

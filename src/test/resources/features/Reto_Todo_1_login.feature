@@ -5,15 +5,16 @@ Feature: login_to_saucedemo
 
 
    Given "<User>" login whit old user "<password>"
-   When "<Product>" select product, user "<firstname>" "<lastname>" region code "<code>"
+   And  Add Product to shopin car
+   When  Fill from with FirstName "<firstname>", LastName "<lastname>" and region code "<code>"
    Then  pendiente validar
 
 
 
    Examples:
-    | Product | lastname | firstname | code   | User          | password     |
-    | fsdfds  | sadfasdf | sadfasdf  | dsfafd | standard_user | secret_sauce |
-   
+    | lastname | firstname | code  | User          | password     |
+    | montoya  | jhon      | 21615 | standard_user | secret_sauce |
+
 
 
 

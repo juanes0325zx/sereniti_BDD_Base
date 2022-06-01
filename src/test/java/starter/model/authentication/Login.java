@@ -13,10 +13,10 @@ public class Login {
 
     public static Performable withCredentials(String username, String password) {
         return Task.where("{0} logins in with username " + username,
-                Open.url("https://www.saucedemo.com/"),
-                Enter.theValue(username).into(USERNAME_FIELD),
-                Enter.theValue(password).into(PASSWORD_FIELD),
-                Click.on(LOGIN_BUTTON)
+                Open.url("https://www.saucedemo.com/")//,
+                //Enter.theValue(username).into(USERNAME_FIELD),
+               // Enter.theValue(password).into(PASSWORD_FIELD),
+               // Click.on(LOGIN_BUTTON)
         );
     }
 

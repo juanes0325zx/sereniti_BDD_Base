@@ -23,6 +23,11 @@ public class Xpath_element {
         return tem;
     }
 
+    public static String getByText(String span){
+        String tem ="//*[contains(text(),'"+span+"')]";
+        return tem;
+    }
+
     public static String getByText_div_Class_Span(String class_object,String span){
         String tem ="//div[@class='"+class_object+"']//span[contains(text(),'"+span+"')]";
         return tem;
