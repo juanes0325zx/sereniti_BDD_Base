@@ -15,10 +15,15 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import starter.model.pageObjects.saucedemo_page.saucedemo_login;
-import starter.model.pageObjects.saucedemo_page.saucedemo_products;
+import starter.model.questions.*;
+import net.serenitybdd.screenplay.ensure.Ensure;
 import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.Login;
+import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
 import starter.task.saucedemo.FillFomAndCheout;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.Matchers.*;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -63,8 +68,9 @@ String Product;
 
    @And("Add Product to shopin car")
    public void Select_product(){
-       Actor actor = theActorCalled("Casual user");
-       actor.attemptsTo(
+       //Actor actor = theActorCalled("Casual user");
+       //actor.attemptsTo(
+               withCurrentActor(
                Navigate.toTheShoppingCart (),
                AddProducts
                        .with()
@@ -75,12 +81,13 @@ String Product;
 
     @When("Fill from with FirstName {string}, LastName {string} and region code {string}")
     public void fill_from_and_checkout( String FirstName, String LastName, String code) {
-    this.Product =Product;
+
         this.FirstName =FirstName;
         this.LastName =LastName;
         this.code =code;
-        Actor actor = theActorCalled("Casual user");
-        actor.attemptsTo(
+       // Actor actor = theActorCalled("Casual user");
+      //  actor.attemptsTo(
+                withCurrentActor(
                 Navigate.toFrom (),
                 FillFomAndCheout
                         .with()
@@ -96,8 +103,23 @@ String Product;
 
     @Then("pendiente validar")
     public void Pendiente_validar() {
-        // Write code here that turns the phrase above into concrete actions
-       // throw new cucumber.api.PendingException();
+        /*theActorInTheSpotlight().should(
+                seeThat ("prueba de visualizacion credito", Complete_checkout.Span_complete (),equalTo ("$350%7")),
+                seeThat ("prueba de visualizacion balance", Complete_checkout.btn_backToHome (),equalTo ("$350%7")),
+                seeThat ("prueba de visualizacion credito", Complete_checkout.Info_text (),equalTo ("$350%7"))
+                ,seeThat ("prueba de visualizacion opción del menu loans",Complete_checkout.Title_thaks_for_order (),equalTo ("Loans"))
+        );*/
+        //  Actor actor = theActorCalled("Validate data");
+        //  actor.attemptsTo(
+       withCurrentActor(
+                 // Navigate.img_pony ()
+               WaitUntil.the ( saucedemo_complete_checkout.img_pony, isVisible ()).forNoMoreThan (20).seconds (),
+                Ensure.that(saucedemo_complete_checkout.img_pony).isDisabled()
+                //Ensure.that(saucedemo_complete_checkout.Info_text).text().isEqualTo("Your order has been dispatched, and will arrive just as fast as the pony can get there!")
+                //  ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).textValues().contains("Back Home")
+                 // ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).text().isEqualTo("Back Home")
+                );
+
     }
 
 
