@@ -103,22 +103,23 @@ String Product;
 
     @Then("pendiente validar")
     public void Pendiente_validar() {
-        /*theActorInTheSpotlight().should(
+
+
+       withCurrentActor(
+               WaitUntil.the ( saucedemo_complete_checkout.img_pony, isVisible ()).forNoMoreThan (20).seconds (),
+                Ensure.that(saucedemo_complete_checkout.img_pony).isDisplayed()
+               ,Ensure.that(saucedemo_complete_checkout.Info_text).text().isEqualTo("Your order has been dispatched, and will arrive just as fast as the pony can get there!")
+               ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).isDisplayed()
+               ,Ensure.that(saucedemo_complete_checkout.Title_thaks_for_order).isDisplayed()
+               ,Ensure.that(saucedemo_complete_checkout.Title_thaks_for_order).text().isEqualTo("THANK YOU FOR YOUR ORDER")
+                );
+
+           /*theActorInTheSpotlight().should(
                 seeThat ("prueba de visualizacion credito", Complete_checkout.Span_complete (),equalTo ("$350%7")),
                 seeThat ("prueba de visualizacion balance", Complete_checkout.btn_backToHome (),equalTo ("$350%7")),
                 seeThat ("prueba de visualizacion credito", Complete_checkout.Info_text (),equalTo ("$350%7"))
                 ,seeThat ("prueba de visualizacion opción del menu loans",Complete_checkout.Title_thaks_for_order (),equalTo ("Loans"))
         );*/
-        //  Actor actor = theActorCalled("Validate data");
-        //  actor.attemptsTo(
-       withCurrentActor(
-                 // Navigate.img_pony ()
-               WaitUntil.the ( saucedemo_complete_checkout.img_pony, isVisible ()).forNoMoreThan (20).seconds (),
-                Ensure.that(saucedemo_complete_checkout.img_pony).isDisabled()
-                //Ensure.that(saucedemo_complete_checkout.Info_text).text().isEqualTo("Your order has been dispatched, and will arrive just as fast as the pony can get there!")
-                //  ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).textValues().contains("Back Home")
-                 // ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).text().isEqualTo("Back Home")
-                );
 
     }
 
