@@ -1,7 +1,7 @@
 package starter.model.pageObjects.saucedemo_page;
 
 import org.openqa.selenium.By;
-import starter.utils.Xpath_element;
+import starter.util.Xpath_element;
 
 public class saucedemo_products {
 

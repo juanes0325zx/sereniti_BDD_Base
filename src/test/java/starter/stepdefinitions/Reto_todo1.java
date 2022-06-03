@@ -4,8 +4,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
+import lombok.SneakyThrows;
 import net.serenitybdd.screenplay.Actor;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Before;
 import starter.navigation.Navigate;
 import starter.state.ClearApplication;
@@ -21,9 +23,17 @@ import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.Login;
 import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
 import starter.task.saucedemo.FillFomAndCheout;
+import starter.util.ExcelReader;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.function.ToIntBiFunction;
+
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static org.hamcrest.Matchers.*;
+
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -36,8 +46,9 @@ String pass;
 String FirstName;
 String LastName;
 String code;
-String Product;
-
+String ExcelPath = "src/test/resources/features/DataDriven/DataLogin.xlsx";
+ExcelReader reader = new ExcelReader();
+List<Map<String,String>> TestData = null;
 
     @Before
     public void setTheStage() {
@@ -45,10 +56,19 @@ String Product;
     }
 
 
-    @Given("{string} login whit old user {string}")
-    public void login_user(String User, String pass) {
-       this.User = User;
-       this.pass = pass;
+
+    @Given("login whit user {string}")
+    public void login_user(String row) {
+        try {
+            TestData = reader.getData(ExcelPath,0);
+        } catch (InvalidFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.User = TestData.get(Integer.parseInt(row)).get("User");
+        this.pass =  TestData.get(Integer.parseInt(row)).get("password");
+
         //this.actor = user;
         setTheStage();
         getDriver();
@@ -59,8 +79,8 @@ String Product;
                      .with()
                      .mailLogin((this.User))
                      .passLogin(this.pass)
-                     .sendData(false),
-                WaitUntil.the ( saucedemo_login.Span_products, isVisible ()).forNoMoreThan (20).seconds ()
+                     .sendData(false)
+                ,Ensure.that(saucedemo_login.Span_products).isDisplayed()
         );
 
 
@@ -79,12 +99,19 @@ String Product;
        );
    }
 
-    @When("Fill from with FirstName {string}, LastName {string} and region code {string}")
-    public void fill_from_and_checkout( String FirstName, String LastName, String code) {
+    @When("Fill from with FirstName LastName and region code {string}")
+    public void fill_from_and_checkout( String row) {
+        try {
+            TestData = reader.getData(ExcelPath,0);
+        } catch (InvalidFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        this.FirstName =FirstName;
-        this.LastName =LastName;
-        this.code =code;
+        this.FirstName =TestData.get(Integer.parseInt(row)).get("firstname");
+        this.LastName =TestData.get(Integer.parseInt(row)).get("lastname");
+        this.code =TestData.get(Integer.parseInt(row)).get("code");
        // Actor actor = theActorCalled("Casual user");
       //  actor.attemptsTo(
                 withCurrentActor(
@@ -96,12 +123,11 @@ String Product;
                         .code(this.code)
                         .sendData(true)
 
-
         );
 
     }
 
-    @Then("pendiente validar")
+    @Then("Validate complete checkout")
     public void Pendiente_validar() {
 
 
