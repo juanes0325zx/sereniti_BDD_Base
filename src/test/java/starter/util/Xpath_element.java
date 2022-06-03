@@ -1,4 +1,4 @@
-package starter.utils;
+package starter.util;
 
 public class Xpath_element {
 

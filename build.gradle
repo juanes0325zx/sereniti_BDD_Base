@@ -36,6 +36,8 @@ ext {
 
 dependencies {
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation 'org.apache.poi:poi:5.2.2'
+    implementation 'org.apache.poi:poi-ooxml:5.2.2'
 
     testImplementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
             "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
@@ -47,6 +49,7 @@ dependencies {
             "org.junit.jupiter:junit-jupiter-engine:5.8.2",
             "org.junit.vintage:junit-vintage-engine:5.8.2",
             "org.assertj:assertj-core:${assertJVersion}"
+
 
 }
 
