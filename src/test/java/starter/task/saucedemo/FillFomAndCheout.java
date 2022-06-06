@@ -12,11 +12,11 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 
 public class FillFomAndCheout implements Task {
 
-    private  String FirstName;
-    private  String LastName;
-    private  String code;
+    private final String FirstName;
+    private final String LastName;
+    private final String code;
 
-    private boolean value;
+    private final boolean value;
 
     public FillFomAndCheout( String FirstName, String LastName, String code, boolean value){
 

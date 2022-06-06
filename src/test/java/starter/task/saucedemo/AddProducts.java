@@ -15,7 +15,7 @@ public class AddProducts implements Task {
 
 
 
-    private boolean value;
+    private final boolean value;
 
     public AddProducts(boolean value){
 
