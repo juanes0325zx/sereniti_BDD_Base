@@ -9,13 +9,17 @@ buildscript {
     maven {
       url "https://plugins.gradle.org/m2/"
     }
+      mavenLocal()
+      jcenter()
   }
   dependencies {
     classpath "net.serenity-bdd:serenity-gradle-plugin:3.1.15"
-
+    classpath "net.serenity-bdd:serenity-single-page-report:3.1.15"
   }
 }
-
+serenity {
+    reports = ["single-page-html"]
+}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
