@@ -57,8 +57,8 @@ List<Map<String,String>> TestData = null;
 
 
 
-    @Given("login whit user {string}")
-    public void login_user(String row) {
+    @Given("login whit user {string} {string}")
+    public void login_user(String row,String Actor) {
         try {
             TestData = reader.getData(ExcelPath,0);
         } catch (InvalidFormatException e) {
@@ -72,7 +72,7 @@ List<Map<String,String>> TestData = null;
         //this.actor = user;
         setTheStage();
         getDriver();
-        Actor actor = theActorCalled("Casual user");
+        Actor actor = theActorCalled(Actor);
         actor.attemptsTo(
                 Navigate.saucedemo (),
              Login
