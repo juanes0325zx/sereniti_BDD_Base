@@ -4,21 +4,15 @@ package starter.stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.And;
 import net.serenitybdd.screenplay.Actor;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Before;
-import starter.model.pageObjects.advantageDemo_principal_page.Principal_page;
+import starter.model.pageObjects.advantageDemo.Principal_page;
 import starter.navigation.Navigate;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.model.pageObjects.saucedemo_page.saucedemo_login;
 import net.serenitybdd.screenplay.ensure.Ensure;
-import starter.task.saucedemo.AddProducts;
 import starter.task.advantageDemo.*;
-import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
-import starter.task.saucedemo.FillFomAndCheout;
 import starter.util.ExcelReader;
 import java.io.IOException;
 import java.util.List;
@@ -27,7 +21,6 @@ import java.util.Random;
 
 import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
@@ -138,7 +131,7 @@ public class Register_New_User_advantageDemo {
         }
         withCurrentActor(
         Ensure.that(Principal_page.Btn_Menu_Login).isDisplayed()
-        , Ensure.that(Principal_page.Btn_Menu_Login).text().contains(this.User)
+       , Ensure.that(Principal_page.Btn_Menu_Login).text().contains(this.User)
 
 );
     }

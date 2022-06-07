@@ -1,4 +1,4 @@
-package starter.model.pageObjects.advantageDemo_principal_page;
+package starter.model.pageObjects.advantageDemo;
 
 import org.openqa.selenium.By;
 

@@ -6,9 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.model.pageObjects.advantageDemo_principal_page.Login;
-import starter.model.pageObjects.advantageDemo_principal_page.Principal_page;
-import starter.model.pageObjects.advantageDemo_principal_page.RegisterUser_page;
+import starter.model.pageObjects.advantageDemo.RegisterUser_page;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

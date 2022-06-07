@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.model.pageObjects.advantageDemo_principal_page.*;
+import starter.model.pageObjects.advantageDemo.*;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isClickable;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -34,8 +34,6 @@ public class Login_register implements Task {
     public <T extends Actor> void performAs(T actor) {
         if(value==true){
         actor.attemptsTo (
-               // WaitUntil.the ( Principal_page.Btn_Menu_Login, isVisible ()).forNoMoreThan (5).seconds (),
-               // Click.on(Principal_page.Btn_Menu_Login),
                 WaitUntil.the ( Login.Link_Create_New_User, isClickable()).forNoMoreThan (5).seconds (),
                 Enter.keyValues (User).into (Login.input_user_name),
                 Enter.keyValues (pass).into (Login.input_password),
@@ -43,8 +41,6 @@ public class Login_register implements Task {
         );
         } else{
             actor.attemptsTo (
-                  //  WaitUntil.the ( Principal_page.Btn_Menu_Login, isVisible ()).forNoMoreThan (5).seconds (),
-                  //  Click.on(Principal_page.Btn_Menu_Login),
                     WaitUntil.the ( Login.Link_Create_New_User, isVisible ()).forNoMoreThan (5).seconds (),
                     Click.on (Login.Link_Create_New_User)
             );
