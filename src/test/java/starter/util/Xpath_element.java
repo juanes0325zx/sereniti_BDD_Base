@@ -2,22 +2,22 @@ package starter.util;
 
 public class Xpath_element {
 
-    public static String getByTestAndClass(String Text, String Class){
-        String tem="//div[contains(text(), '"+Text+"')]/following-sibling::div[@class='"+Class+"']";
+
+
+        public static String getElementOfTableWithTbody(String tableclass,String tbodyRow,String trRow,String tdRow){
+        String tem ="//table[@class='"+tableclass+"']//tbody["+tbodyRow+"]//tr["+trRow+"]//td["+tdRow+"]";
         return tem;
     }
-    public static String getByDynamicTableWithClass(String class_element,String cord1,String cord2){
-        String tem="";
-        if ((cord2!=null)){ tem = "//div[@class='"+class_element+"']//table//tr["+cord1+"]//td["+cord2+"]";
-        }else{ tem = "//div[@class='"+class_element+"']//table//tr["+cord1+"]";}
+    public static String getListByclassRow(String class_object,String row){
+        String tem ="//div[@class='"+class_object+"']//li["+row+"]";
         return tem;
     }
-    public static String getByDynamicTableWithId(String id_element,String cord1,String cord2){
-        String tem="";
-        if ((cord2!=null)){ tem = "//div[@class='"+id_element+"']//table//tr["+cord1+"]//td["+cord2+"]";
-        }else{ tem = "//div[@class='"+id_element+"']//table//tr["+cord1+"]";}
+    public static String getObjectToListByclassRow(String class_object,String row, String class_object2){
+        String tem ="//div[@class='"+class_object+"']//li["+row+"]//div[@class='"+class_object2+"']";
         return tem;
     }
+
+
     public static String getByTextSpan(String span){
         String tem ="//span[contains(text(),'"+span+"')]";
         return tem;

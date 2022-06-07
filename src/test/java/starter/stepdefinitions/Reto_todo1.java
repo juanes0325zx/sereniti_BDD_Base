@@ -4,37 +4,24 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
-import lombok.SneakyThrows;
 import net.serenitybdd.screenplay.Actor;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Before;
 import starter.navigation.Navigate;
-import starter.state.ClearApplication;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import starter.model.pageObjects.saucedemo_page.saucedemo_login;
-import starter.model.questions.*;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.Login;
 import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
 import starter.task.saucedemo.FillFomAndCheout;
 import starter.util.ExcelReader;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.function.ToIntBiFunction;
-
-import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
-import static org.hamcrest.Matchers.*;
-
-
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
