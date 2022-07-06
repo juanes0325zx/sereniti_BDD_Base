@@ -17,9 +17,6 @@ buildscript {
     classpath "net.serenity-bdd:serenity-single-page-report:3.1.15"
   }
 }
-serenity {
-    reports = ["single-page-html"]
-}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -56,6 +53,11 @@ dependencies {
 
 
 }
+
+serenity {
+    reports = ["single-page-html"]
+}
+
 
 test {
     testLogging.showStandardStreams = true
