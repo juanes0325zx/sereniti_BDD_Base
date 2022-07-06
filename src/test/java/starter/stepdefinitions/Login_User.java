@@ -44,5 +44,35 @@ ReadExcelModel read = new ReadExcelModel();
         OnStage.setTheStage(new OnlineCast());
     }
 
+    @Given("login whit  valid user {string} {string}")
+    public void login_user(String row,String Actor) {
 
+        this.User = read.getUser(row);
+        this.pass =  read.getPass(row);
+        setTheStage();
+        getDriver();
+        Actor actor = theActorCalled(Actor);
+        actor.attemptsTo(
+                Navigate.saucedemo (),
+                Login
+                        .with()
+                        .mailLogin((this.User))
+                        .passLogin(this.pass)
+                        .sendData(false)
+                ,Ensure.that(saucedemo_login.Span_products).isDisplayed()
+        );
+    }
+     @When("Load data for validate")
+    public void loadData(){
+
+
+
+     }
+
+
+     @Then("Validate login with valid user")
+    public  void  validateLogin(){
+
+
+     }
 }
