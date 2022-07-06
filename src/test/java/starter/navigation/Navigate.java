@@ -2,13 +2,11 @@ package starter.navigation;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
-import net.serenitybdd.screenplay.ui.PageElement;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
-import starter.model.pageObjects.saucedemo_page.saucedemo_login;
-import starter.model.pageObjects.saucedemo_page.saucedemo_form;
+import starter.pageObjects.saucedemo_complete_checkout;
+import starter.pageObjects.saucedemo_login;
+import starter.pageObjects.saucedemo_form;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

@@ -6,9 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.By;
-import starter.model.pageObjects.saucedemo_page.saucedemo_login;
-import starter.model.pageObjects.saucedemo_page.saucedemo_products;
+import starter.pageObjects.saucedemo_login;
 
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;

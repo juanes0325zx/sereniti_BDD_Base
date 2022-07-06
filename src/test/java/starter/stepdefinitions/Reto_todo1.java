@@ -6,23 +6,17 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
 import net.serenitybdd.screenplay.Actor;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Before;
 import starter.navigation.Navigate;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.model.pageObjects.saucedemo_page.saucedemo_login;
+import starter.pageObjects.saucedemo_login;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.Login;
-import starter.model.pageObjects.saucedemo_page.saucedemo_complete_checkout;
+import starter.pageObjects.saucedemo_complete_checkout;
 import starter.task.saucedemo.FillFomAndCheout;
-import starter.util.ExcelReader;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;

@@ -1,4 +1,4 @@
-package starter.model.pageObjects.saucedemo_page;
+package starter.pageObjects;
 
 import org.openqa.selenium.By;
 import starter.util.Xpath_element;
