@@ -13,7 +13,6 @@ public class ReadExcelModel {
     String FirstName;
     String LastName;
     String code;
-
     String ExcelPath = "src/test/resources/features/DataDriven/DataLogin.xlsx";
     ExcelReader reader = new ExcelReader();
     List<Map<String,String>> TestData = null;

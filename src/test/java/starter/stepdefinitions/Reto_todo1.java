@@ -31,6 +31,8 @@ import static net.serenitybdd.screenplay.actors.OnStage.*;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
+import starter.model.ReadExcelModel;
+
 
 public class Reto_todo1 {
 
@@ -39,9 +41,9 @@ String pass;
 String FirstName;
 String LastName;
 String code;
-String ExcelPath = "src/test/resources/features/DataDriven/DataLogin.xlsx";
-ExcelReader reader = new ExcelReader();
-List<Map<String,String>> TestData = null;
+
+ReadExcelModel read = new ReadExcelModel();
+
 
     @Before
     public void setTheStage() {
@@ -52,17 +54,9 @@ List<Map<String,String>> TestData = null;
 
     @Given("login whit user {string} {string}")
     public void login_user(String row,String Actor) {
-        try {
-            TestData = reader.getData(ExcelPath,0);
-        } catch (InvalidFormatException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        this.User = TestData.get(Integer.parseInt(row)).get("User");
-        this.pass =  TestData.get(Integer.parseInt(row)).get("password");
 
-        //this.actor = user;
+        this.User = read.getUser(row);
+        this.pass =  read.getPass(row);
         setTheStage();
         getDriver();
         Actor actor = theActorCalled(Actor);
@@ -94,19 +88,10 @@ List<Map<String,String>> TestData = null;
 
     @When("Fill from with FirstName LastName and region code {string}")
     public void fill_from_and_checkout( String row) {
-        try {
-            TestData = reader.getData(ExcelPath,0);
-        } catch (InvalidFormatException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.FirstName =read.getFirstName(row);
+        this.LastName =read.getLastName(row);
+        this.code =read.getCode(row);
 
-        this.FirstName =TestData.get(Integer.parseInt(row)).get("firstname");
-        this.LastName =TestData.get(Integer.parseInt(row)).get("lastname");
-        this.code =TestData.get(Integer.parseInt(row)).get("code");
-       // Actor actor = theActorCalled("Casual user");
-      //  actor.attemptsTo(
                 withCurrentActor(
                 Navigate.toFrom (),
                 FillFomAndCheout
