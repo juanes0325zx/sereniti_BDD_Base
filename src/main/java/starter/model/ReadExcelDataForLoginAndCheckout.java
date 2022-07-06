@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class ReadExcelModel {
+public class ReadExcelDataForLoginAndCheckout {
     String User;
     String pass;
     String FirstName;

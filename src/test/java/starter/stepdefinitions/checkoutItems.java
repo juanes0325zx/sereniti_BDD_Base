@@ -10,7 +10,7 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.junit.Before;
-import starter.model.ReadExcelModel;
+import starter.model.ReadExcelDataForLoginAndCheckout;
 import starter.navigation.Navigate;
 import starter.pageObjects.saucedemo_complete_checkout;
 import starter.pageObjects.saucedemo_login;
@@ -32,7 +32,7 @@ String FirstName;
 String LastName;
 String code;
 
-ReadExcelModel read = new ReadExcelModel();
+ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
 
 
     @Before
