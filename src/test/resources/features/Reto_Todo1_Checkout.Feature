@@ -1,4 +1,4 @@
-Feature: checkout_items
+Feature: Reto_Todo1_Checkout
 
 
   Scenario Outline: Add items to shoping card and checkout

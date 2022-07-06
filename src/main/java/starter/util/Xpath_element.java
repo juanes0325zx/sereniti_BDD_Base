@@ -23,8 +23,8 @@ public class Xpath_element {
         return tem;
     }
 
-    public static String getByText(String span){
-        String tem ="//*[contains(text(),'"+span+"')]";
+    public static String getByText(String TEXT){
+        String tem ="//*[contains(text(),'"+TEXT+"')]";
         return tem;
     }
 

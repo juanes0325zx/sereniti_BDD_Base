@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class ReadExcelModel {
+public class ReadDataForLoginAndCheckout {
     String User;
     String pass;
     String FirstName;
     String LastName;
     String code;
-    String ExcelPath = "src/test/resources/features/DataDriven/DataLogin.xlsx";
+    String ExcelPath = "src/test/resources/features/DataDriven/CheckoutAndLogin.xlsx";
     ExcelReader reader = new ExcelReader();
     List<Map<String,String>> TestData = null;
 

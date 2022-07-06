@@ -1,5 +1,6 @@
 package starter.pageObjects;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import starter.util.Xpath_element;
 
@@ -13,5 +14,9 @@ public class saucedemo_products {
     public static By Span_products = By.xpath(Xpath_element.getByText("DESCRIPTION"));
 
     public static By Btn_checkout = By.xpath("//*[ @id='checkout']");
+
+    static By findByTest(String Text){
+        return By.xpath(Xpath_element.getByText(Text));
+    }
 
 }
