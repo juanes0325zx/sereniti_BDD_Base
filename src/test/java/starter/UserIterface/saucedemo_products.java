@@ -14,4 +14,7 @@ public class saucedemo_products {
 
     public static By Btn_checkout = By.xpath("//*[ @id='checkout']");
 
+    public static  By MapWithText(String text){
+        return   By.xpath(Xpath_element.getByText(text));
+    }
 }

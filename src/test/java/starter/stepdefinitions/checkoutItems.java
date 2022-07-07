@@ -17,6 +17,7 @@ import starter.UserIterface.saucedemo_login;
 import starter.task.saucedemo.AddProducts;
 import starter.task.saucedemo.FillFomAndCheout;
 import starter.task.saucedemo.Login;
+import starter.task.saucedemo.ValidCheckout;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.withCurrentActor;
@@ -65,14 +66,11 @@ ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
 
    @And("Add Product to shopin car")
    public void Select_product(){
-       //Actor actor = theActorCalled("Casual user");
-       //actor.attemptsTo(
                withCurrentActor(
                Navigate.toTheShoppingCart (),
                AddProducts
                        .with()
                        .sendData(true)
-
        );
    }
 
@@ -90,9 +88,7 @@ ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
                         .LastName(this.LastName)
                         .code(this.code)
                         .sendData(true)
-
         );
-
     }
 
     @Then("Validate complete checkout")
@@ -100,21 +96,10 @@ ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
 
 
        withCurrentActor(
-               WaitUntil.the ( saucedemo_complete_checkout.img_pony, isVisible ()).forNoMoreThan (20).seconds (),
-                Ensure.that(saucedemo_complete_checkout.img_pony).isDisplayed()
-               ,Ensure.that(saucedemo_complete_checkout.Info_text).text().isEqualTo("Your order has been dispatched, and will arrive just as fast as the pony can get there!")
-               ,Ensure.that(saucedemo_complete_checkout.btn_backToHome).isDisplayed()
-               ,Ensure.that(saucedemo_complete_checkout.Title_thaks_for_order).isDisplayed()
-               ,Ensure.that(saucedemo_complete_checkout.Title_thaks_for_order).text().isEqualTo("THANK YOU FOR YOUR ORDER")
-                );
-
-           /*theActorInTheSpotlight().should(
-                seeThat ("prueba de visualizacion credito", Complete_checkout.Span_complete (),equalTo ("$350%7")),
-                seeThat ("prueba de visualizacion balance", Complete_checkout.btn_backToHome (),equalTo ("$350%7")),
-                seeThat ("prueba de visualizacion credito", Complete_checkout.Info_text (),equalTo ("$350%7"))
-                ,seeThat ("prueba de visualizacion opción del menu loans",Complete_checkout.Title_thaks_for_order (),equalTo ("Loans"))
-        );*/
-
+               ValidCheckout
+                       .with()
+                       .sendData(true)
+       );
     }
 
 

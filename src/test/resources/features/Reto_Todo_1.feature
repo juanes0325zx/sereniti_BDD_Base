@@ -1,6 +1,6 @@
 Feature: Reto_Todo1
 
-
+@suite1
   Scenario Outline: Todo_1 login
 
 
@@ -18,7 +18,7 @@ Feature: Reto_Todo1
 
 
 
-
+@suite2
   Scenario Outline: Add items to shoping card and checkout
 
 

@@ -5,19 +5,24 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.junit.Before;
-import starter.ReadDataModel.ReadExcelDataForLogin;
+import starter.ReadDataModel.ReadExcelDataForLoginAndCheckout;
+import starter.UserIterface.saucedemo_products;
 import starter.navigation.Navigate;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import starter.UserIterface.saucedemo_login;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import starter.task.saucedemo.Login;
+import starter.task.saucedemo.ValidLogin;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
+import static net.serenitybdd.screenplay.actors.OnStage.withCurrentActor;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
 
 
@@ -29,7 +34,7 @@ String title;
 String objet_1;
 String objet_2;
 
-    ReadExcelDataForLogin read = new ReadExcelDataForLogin();
+    ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
 
 
     @Before
@@ -66,7 +71,13 @@ String objet_2;
 
      @Then("Validate login with valid user")
     public  void  validateLogin(){
-
-
+         withCurrentActor(
+                 ValidLogin
+                         .with()
+                         .titlePage(this.title)
+                         .item1(this.objet_1)
+                         .item2(this.objet_2)
+                         .sendData(true)
+         );
      }
 }
