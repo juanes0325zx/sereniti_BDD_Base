@@ -6,10 +6,11 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 
 import org.junit.Before;
+import starter.ReadDataModel.ReadExcelDataForLogin;
 import starter.navigation.Navigate;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import starter.pageObjects.saucedemo_login;
+import starter.UserIterface.saucedemo_login;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import starter.task.saucedemo.Login;
 
@@ -18,7 +19,6 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
-import starter.model.ReadExcelDataForLoginAndCheckout;
 
 
 public class Login_User {
@@ -29,7 +29,7 @@ String title;
 String objet_1;
 String objet_2;
 
-ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
+    ReadExcelDataForLogin read = new ReadExcelDataForLogin();
 
 
     @Before
@@ -55,10 +55,11 @@ ReadExcelDataForLoginAndCheckout read = new ReadExcelDataForLoginAndCheckout();
                 ,Ensure.that(saucedemo_login.Span_products).isDisplayed()
         );
     }
-     @When("Load data for validate")
-    public void loadData(){
-
-
+     @When("Load data for validate {string}")
+    public void loadData(String row){
+         this.title = read.getTitle(row) ;
+         this.objet_1 = read.getItem_1(row);
+         this.objet_2= read.getItem_2(row);
 
      }
 

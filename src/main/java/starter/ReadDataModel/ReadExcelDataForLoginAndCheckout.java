@@ -1,4 +1,4 @@
-package starter.model;
+package starter.ReadDataModel;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import starter.util.ExcelReader;
@@ -13,7 +13,7 @@ public class ReadExcelDataForLoginAndCheckout {
     String FirstName;
     String LastName;
     String code;
-    String ExcelPath = "src/test/resources/features/DataDriven/DataLogin.xlsx";
+    String ExcelPath = "src/test/resources/features/DataSet/DataLoginAndCheckout.xlsx";
     ExcelReader reader = new ExcelReader();
     List<Map<String,String>> TestData = null;
 

@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.pageObjects.saucedemo_form;
+import starter.UserIterface.saucedemo_form;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

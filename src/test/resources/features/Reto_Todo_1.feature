@@ -5,7 +5,7 @@ Feature: Reto_Todo1
 
 
    Given login whit  valid user "<row>" "<Actor>"
-   When  Load data for validate
+   When  Load data for validate "<row>"
    Then  Validate login with valid user
 
 

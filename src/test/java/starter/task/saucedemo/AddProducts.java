@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.pageObjects.saucedemo_products;
+import starter.UserIterface.saucedemo_products;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 

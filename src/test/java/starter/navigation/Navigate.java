@@ -4,9 +4,9 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import starter.pageObjects.saucedemo_complete_checkout;
-import starter.pageObjects.saucedemo_login;
-import starter.pageObjects.saucedemo_form;
+import starter.UserIterface.saucedemo_complete_checkout;
+import starter.UserIterface.saucedemo_login;
+import starter.UserIterface.saucedemo_form;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
